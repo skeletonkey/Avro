@@ -1,0 +1,64 @@
+{
+  "namespace": "com.jundy.client",
+  "name": "Rules",
+  "type": "record",
+  "fields": [
+    {
+      "name": "uuid",
+      "type": "string",
+      "default": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+    },
+    {
+      "name": "Channel",
+      "type": {
+        "type": "enum",
+        "name": "Channel",
+        "symbols": [ "INTERNET", "IVR", "PBO", "PHONE" ],
+        "default": "INTERNET"
+      }
+    },
+    {
+      "name": "Market",
+      "type": {
+        "type": "enum",
+        "name": "Market",
+        "symbols": [ "UNITEDSTATES", "AUSTRALIA", "CANADA", "GERMANY", "GREATBRITAIN", "IRELAND", "MEXICO", "NEWZEALAND", "NORTHIRELAND", "SPAIN" ],
+        "default": "UNITEDSTATES"
+      }
+    },
+    {
+      "name": "feature_set",
+      "type": [ "null", "string" ],
+      "default": null
+    },
+    {
+      "name": "RuleSet",
+      "type": {
+        "name": "RuleSet",
+        "type": "record",
+        "fields": [
+          {
+            "name": "enable_insurance",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "require_delivery_method_to_complete_order",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "shopping_cart_ttl",
+            "type": "int",
+            "default": 600
+          },
+          {
+            "name": "configurable_customer_info_obj_fields",
+            "type": ["null", "string"],
+            "default": null
+          }
+        ]
+      }
+    }
+  ]
+}
