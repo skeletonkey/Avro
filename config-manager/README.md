@@ -18,13 +18,13 @@ It's assumed that Confluent Platform is running using `example/cp-all-in-one`.
 
 Also, that there's a topic named `config_user_rules`.
 
-Run the contain - it'll emit one record as programmed:
+Run the container - it'll emit one record as programmed:
 
 ```
 docker run -it --rm --name my_config-manager --network host config-manager
 ```
 
-Run the container (choose your favorite way from the `Build & Develop` section) and run:
+Run *in* the container. Choose your favorite way from the `Build & Develop` section and once at the command prompt run:
 
 ```
 mvn -q exec:java -Dexec.mainClass=com.jundy.avro.App

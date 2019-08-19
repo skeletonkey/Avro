@@ -24,7 +24,7 @@ Run the container - it'll consume every record from the topic each time it is ru
 docker run -it --rm --name my_java_consumer --network host java_consumer
 ```
 
-Run the container (choose your favorite way from the `Build & Develop` section) and run:
+Run *in* the container. Choose your favorite way from the `Build & Develop` section and once at the command prompt run
 
 ```
 mvn -q exec:java -Dexec.mainClass=com.jundy.avro.App
