@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Rules extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7751606744652292322L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Rules\",\"namespace\":\"com.jundy.client\",\"fields\":[{\"name\":\"uuid\",\"type\":\"string\",\"default\":\"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"},{\"name\":\"Channel\",\"type\":{\"type\":\"enum\",\"name\":\"Channel\",\"symbols\":[\"INTERNET\",\"IVR\",\"PBO\",\"PHONE\"],\"default\":\"INTERNET\"}},{\"name\":\"Market\",\"type\":{\"type\":\"enum\",\"name\":\"Market\",\"symbols\":[\"UNITEDSTATES\",\"AUSTRALIA\",\"CANADA\",\"GERMANY\",\"GREATBRITAIN\",\"IRELAND\",\"MEXICO\",\"NEWZEALAND\",\"NORTHIRELAND\",\"SPAIN\"],\"default\":\"UNITEDSTATES\"}},{\"name\":\"feature_set\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"RuleSet\",\"type\":{\"type\":\"record\",\"name\":\"RuleSet\",\"fields\":[{\"name\":\"enable_insurance\",\"type\":\"boolean\",\"default\":false},{\"name\":\"require_delivery_method_to_complete_order\",\"type\":\"boolean\",\"default\":false},{\"name\":\"shopping_cart_ttl\",\"type\":\"int\",\"default\":600},{\"name\":\"configurable_customer_info_obj_fields\",\"type\":[\"null\",\"string\"],\"default\":null}]}}]}");
+  private static final long serialVersionUID = 9191851519804753075L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Rules\",\"namespace\":\"com.jundy.client\",\"fields\":[{\"name\":\"uuid\",\"type\":\"string\",\"doc\":\"UUID for client that rules belong to\",\"default\":\"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"},{\"name\":\"Channel\",\"type\":{\"type\":\"enum\",\"name\":\"Channel\",\"doc\":\"Category that the client is allows to transact on\",\"symbols\":[\"INTERNET\",\"IVR\",\"PHONE\"],\"default\":\"INTERNET\"}},{\"name\":\"Market\",\"type\":{\"type\":\"enum\",\"name\":\"Market\",\"doc\":\"Market which client is allowed to operate in\",\"symbols\":[\"UNITEDSTATES\",\"AUSTRALIA\",\"CANADA\",\"GERMANY\",\"GREATBRITAIN\",\"IRELAND\",\"MEXICO\",\"NEWZEALAND\",\"NORTHIRELAND\",\"SPAIN\"],\"default\":\"UNITEDSTATES\"}},{\"name\":\"feature_set\",\"type\":[\"null\",\"string\"],\"doc\":\"The human readable client name/id\",\"default\":null},{\"name\":\"RuleSet\",\"type\":{\"type\":\"record\",\"name\":\"RuleSet\",\"fields\":[{\"name\":\"enable_insurance\",\"type\":\"boolean\",\"doc\":\"Flag indicating if client is allowed to offer insurance\",\"default\":false},{\"name\":\"require_delivery_method_to_complete_order\",\"type\":\"boolean\",\"doc\":\"Flag indicating if client is required to provided a delivery method to complete an order\",\"default\":false},{\"name\":\"shopping_cart_ttl\",\"type\":\"int\",\"doc\":\"Max time that a cart is allowed to exists.\",\"default\":600},{\"name\":\"configurable_customer_info_obj_fields\",\"type\":[\"null\",\"string\"],\"doc\":\"What customer information fields are required for customer data to be considered 'compelte'\",\"default\":null}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,9 +51,11 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
     return DECODER.decode(b);
   }
 
+  /** UUID for client that rules belong to */
   @Deprecated public java.lang.CharSequence uuid;
   @Deprecated public com.jundy.client.Channel Channel;
   @Deprecated public com.jundy.client.Market Market;
+  /** The human readable client name/id */
   @Deprecated public java.lang.CharSequence feature_set;
   @Deprecated public com.jundy.client.RuleSet RuleSet;
 
@@ -66,10 +68,10 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * All-args constructor.
-   * @param uuid The new value for uuid
+   * @param uuid UUID for client that rules belong to
    * @param Channel The new value for Channel
    * @param Market The new value for Market
-   * @param feature_set The new value for feature_set
+   * @param feature_set The human readable client name/id
    * @param RuleSet The new value for RuleSet
    */
   public Rules(java.lang.CharSequence uuid, com.jundy.client.Channel Channel, com.jundy.client.Market Market, java.lang.CharSequence feature_set, com.jundy.client.RuleSet RuleSet) {
@@ -108,7 +110,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'uuid' field.
-   * @return The value of the 'uuid' field.
+   * @return UUID for client that rules belong to
    */
   public java.lang.CharSequence getUuid() {
     return uuid;
@@ -116,6 +118,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Sets the value of the 'uuid' field.
+   * UUID for client that rules belong to
    * @param value the value to set.
    */
   public void setUuid(java.lang.CharSequence value) {
@@ -156,7 +159,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'feature_set' field.
-   * @return The value of the 'feature_set' field.
+   * @return The human readable client name/id
    */
   public java.lang.CharSequence getFeatureSet() {
     return feature_set;
@@ -164,6 +167,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Sets the value of the 'feature_set' field.
+   * The human readable client name/id
    * @param value the value to set.
    */
   public void setFeatureSet(java.lang.CharSequence value) {
@@ -218,9 +222,11 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Rules>
     implements org.apache.avro.data.RecordBuilder<Rules> {
 
+    /** UUID for client that rules belong to */
     private java.lang.CharSequence uuid;
     private com.jundy.client.Channel Channel;
     private com.jundy.client.Market Market;
+    /** The human readable client name/id */
     private java.lang.CharSequence feature_set;
     private com.jundy.client.RuleSet RuleSet;
     private com.jundy.client.RuleSet.Builder RuleSetBuilder;
@@ -292,6 +298,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Gets the value of the 'uuid' field.
+      * UUID for client that rules belong to
       * @return The value.
       */
     public java.lang.CharSequence getUuid() {
@@ -300,6 +307,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Sets the value of the 'uuid' field.
+      * UUID for client that rules belong to
       * @param value The value of 'uuid'.
       * @return This builder.
       */
@@ -312,6 +320,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Checks whether the 'uuid' field has been set.
+      * UUID for client that rules belong to
       * @return True if the 'uuid' field has been set, false otherwise.
       */
     public boolean hasUuid() {
@@ -321,6 +330,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Clears the value of the 'uuid' field.
+      * UUID for client that rules belong to
       * @return This builder.
       */
     public com.jundy.client.Rules.Builder clearUuid() {
@@ -409,6 +419,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Gets the value of the 'feature_set' field.
+      * The human readable client name/id
       * @return The value.
       */
     public java.lang.CharSequence getFeatureSet() {
@@ -417,6 +428,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Sets the value of the 'feature_set' field.
+      * The human readable client name/id
       * @param value The value of 'feature_set'.
       * @return This builder.
       */
@@ -429,6 +441,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Checks whether the 'feature_set' field has been set.
+      * The human readable client name/id
       * @return True if the 'feature_set' field has been set, false otherwise.
       */
     public boolean hasFeatureSet() {
@@ -438,6 +451,7 @@ public class Rules extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Clears the value of the 'feature_set' field.
+      * The human readable client name/id
       * @return This builder.
       */
     public com.jundy.client.Rules.Builder clearFeatureSet() {

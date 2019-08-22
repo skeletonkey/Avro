@@ -5,9 +5,10 @@
  */
 package com.jundy.client;
 @SuppressWarnings("all")
+/** Market which client is allowed to operate in */
 @org.apache.avro.specific.AvroGenerated
 public enum Market {
   UNITEDSTATES, AUSTRALIA, CANADA, GERMANY, GREATBRITAIN, IRELAND, MEXICO, NEWZEALAND, NORTHIRELAND, SPAIN  ;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Market\",\"namespace\":\"com.jundy.client\",\"symbols\":[\"UNITEDSTATES\",\"AUSTRALIA\",\"CANADA\",\"GERMANY\",\"GREATBRITAIN\",\"IRELAND\",\"MEXICO\",\"NEWZEALAND\",\"NORTHIRELAND\",\"SPAIN\"],\"default\":\"UNITEDSTATES\"}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Market\",\"namespace\":\"com.jundy.client\",\"doc\":\"Market which client is allowed to operate in\",\"symbols\":[\"UNITEDSTATES\",\"AUSTRALIA\",\"CANADA\",\"GERMANY\",\"GREATBRITAIN\",\"IRELAND\",\"MEXICO\",\"NEWZEALAND\",\"NORTHIRELAND\",\"SPAIN\"],\"default\":\"UNITEDSTATES\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 }

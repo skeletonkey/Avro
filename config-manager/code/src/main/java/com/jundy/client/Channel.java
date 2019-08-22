@@ -5,9 +5,10 @@
  */
 package com.jundy.client;
 @SuppressWarnings("all")
+/** Category that the client is allows to transact on */
 @org.apache.avro.specific.AvroGenerated
 public enum Channel {
-  INTERNET, IVR, PBO, PHONE  ;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Channel\",\"namespace\":\"com.jundy.client\",\"symbols\":[\"INTERNET\",\"IVR\",\"PBO\",\"PHONE\"],\"default\":\"INTERNET\"}");
+  INTERNET, IVR, PHONE  ;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Channel\",\"namespace\":\"com.jundy.client\",\"doc\":\"Category that the client is allows to transact on\",\"symbols\":[\"INTERNET\",\"IVR\",\"PHONE\"],\"default\":\"INTERNET\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 }

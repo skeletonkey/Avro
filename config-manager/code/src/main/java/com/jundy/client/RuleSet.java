@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class RuleSet extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -7942855220261206575L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RuleSet\",\"namespace\":\"com.jundy.client\",\"fields\":[{\"name\":\"enable_insurance\",\"type\":\"boolean\",\"default\":false},{\"name\":\"require_delivery_method_to_complete_order\",\"type\":\"boolean\",\"default\":false},{\"name\":\"shopping_cart_ttl\",\"type\":\"int\",\"default\":600},{\"name\":\"configurable_customer_info_obj_fields\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RuleSet\",\"namespace\":\"com.jundy.client\",\"fields\":[{\"name\":\"enable_insurance\",\"type\":\"boolean\",\"doc\":\"Flag indicating if client is allowed to offer insurance\",\"default\":false},{\"name\":\"require_delivery_method_to_complete_order\",\"type\":\"boolean\",\"doc\":\"Flag indicating if client is required to provided a delivery method to complete an order\",\"default\":false},{\"name\":\"shopping_cart_ttl\",\"type\":\"int\",\"doc\":\"Max time that a cart is allowed to exists.\",\"default\":600},{\"name\":\"configurable_customer_info_obj_fields\",\"type\":[\"null\",\"string\"],\"doc\":\"What customer information fields are required for customer data to be considered 'compelte'\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,9 +51,13 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
+  /** Flag indicating if client is allowed to offer insurance */
   @Deprecated public boolean enable_insurance;
+  /** Flag indicating if client is required to provided a delivery method to complete an order */
   @Deprecated public boolean require_delivery_method_to_complete_order;
+  /** Max time that a cart is allowed to exists. */
   @Deprecated public int shopping_cart_ttl;
+  /** What customer information fields are required for customer data to be considered 'compelte' */
   @Deprecated public java.lang.CharSequence configurable_customer_info_obj_fields;
 
   /**
@@ -65,10 +69,10 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * All-args constructor.
-   * @param enable_insurance The new value for enable_insurance
-   * @param require_delivery_method_to_complete_order The new value for require_delivery_method_to_complete_order
-   * @param shopping_cart_ttl The new value for shopping_cart_ttl
-   * @param configurable_customer_info_obj_fields The new value for configurable_customer_info_obj_fields
+   * @param enable_insurance Flag indicating if client is allowed to offer insurance
+   * @param require_delivery_method_to_complete_order Flag indicating if client is required to provided a delivery method to complete an order
+   * @param shopping_cart_ttl Max time that a cart is allowed to exists.
+   * @param configurable_customer_info_obj_fields What customer information fields are required for customer data to be considered 'compelte'
    */
   public RuleSet(java.lang.Boolean enable_insurance, java.lang.Boolean require_delivery_method_to_complete_order, java.lang.Integer shopping_cart_ttl, java.lang.CharSequence configurable_customer_info_obj_fields) {
     this.enable_insurance = enable_insurance;
@@ -103,7 +107,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'enable_insurance' field.
-   * @return The value of the 'enable_insurance' field.
+   * @return Flag indicating if client is allowed to offer insurance
    */
   public java.lang.Boolean getEnableInsurance() {
     return enable_insurance;
@@ -111,6 +115,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'enable_insurance' field.
+   * Flag indicating if client is allowed to offer insurance
    * @param value the value to set.
    */
   public void setEnableInsurance(java.lang.Boolean value) {
@@ -119,7 +124,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'require_delivery_method_to_complete_order' field.
-   * @return The value of the 'require_delivery_method_to_complete_order' field.
+   * @return Flag indicating if client is required to provided a delivery method to complete an order
    */
   public java.lang.Boolean getRequireDeliveryMethodToCompleteOrder() {
     return require_delivery_method_to_complete_order;
@@ -127,6 +132,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'require_delivery_method_to_complete_order' field.
+   * Flag indicating if client is required to provided a delivery method to complete an order
    * @param value the value to set.
    */
   public void setRequireDeliveryMethodToCompleteOrder(java.lang.Boolean value) {
@@ -135,7 +141,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'shopping_cart_ttl' field.
-   * @return The value of the 'shopping_cart_ttl' field.
+   * @return Max time that a cart is allowed to exists.
    */
   public java.lang.Integer getShoppingCartTtl() {
     return shopping_cart_ttl;
@@ -143,6 +149,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'shopping_cart_ttl' field.
+   * Max time that a cart is allowed to exists.
    * @param value the value to set.
    */
   public void setShoppingCartTtl(java.lang.Integer value) {
@@ -151,7 +158,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'configurable_customer_info_obj_fields' field.
-   * @return The value of the 'configurable_customer_info_obj_fields' field.
+   * @return What customer information fields are required for customer data to be considered 'compelte'
    */
   public java.lang.CharSequence getConfigurableCustomerInfoObjFields() {
     return configurable_customer_info_obj_fields;
@@ -159,6 +166,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'configurable_customer_info_obj_fields' field.
+   * What customer information fields are required for customer data to be considered 'compelte'
    * @param value the value to set.
    */
   public void setConfigurableCustomerInfoObjFields(java.lang.CharSequence value) {
@@ -197,9 +205,13 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RuleSet>
     implements org.apache.avro.data.RecordBuilder<RuleSet> {
 
+    /** Flag indicating if client is allowed to offer insurance */
     private boolean enable_insurance;
+    /** Flag indicating if client is required to provided a delivery method to complete an order */
     private boolean require_delivery_method_to_complete_order;
+    /** Max time that a cart is allowed to exists. */
     private int shopping_cart_ttl;
+    /** What customer information fields are required for customer data to be considered 'compelte' */
     private java.lang.CharSequence configurable_customer_info_obj_fields;
 
     /** Creates a new Builder */
@@ -257,6 +269,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'enable_insurance' field.
+      * Flag indicating if client is allowed to offer insurance
       * @return The value.
       */
     public java.lang.Boolean getEnableInsurance() {
@@ -265,6 +278,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'enable_insurance' field.
+      * Flag indicating if client is allowed to offer insurance
       * @param value The value of 'enable_insurance'.
       * @return This builder.
       */
@@ -277,6 +291,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'enable_insurance' field has been set.
+      * Flag indicating if client is allowed to offer insurance
       * @return True if the 'enable_insurance' field has been set, false otherwise.
       */
     public boolean hasEnableInsurance() {
@@ -286,6 +301,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'enable_insurance' field.
+      * Flag indicating if client is allowed to offer insurance
       * @return This builder.
       */
     public com.jundy.client.RuleSet.Builder clearEnableInsurance() {
@@ -295,6 +311,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'require_delivery_method_to_complete_order' field.
+      * Flag indicating if client is required to provided a delivery method to complete an order
       * @return The value.
       */
     public java.lang.Boolean getRequireDeliveryMethodToCompleteOrder() {
@@ -303,6 +320,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'require_delivery_method_to_complete_order' field.
+      * Flag indicating if client is required to provided a delivery method to complete an order
       * @param value The value of 'require_delivery_method_to_complete_order'.
       * @return This builder.
       */
@@ -315,6 +333,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'require_delivery_method_to_complete_order' field has been set.
+      * Flag indicating if client is required to provided a delivery method to complete an order
       * @return True if the 'require_delivery_method_to_complete_order' field has been set, false otherwise.
       */
     public boolean hasRequireDeliveryMethodToCompleteOrder() {
@@ -324,6 +343,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'require_delivery_method_to_complete_order' field.
+      * Flag indicating if client is required to provided a delivery method to complete an order
       * @return This builder.
       */
     public com.jundy.client.RuleSet.Builder clearRequireDeliveryMethodToCompleteOrder() {
@@ -333,6 +353,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'shopping_cart_ttl' field.
+      * Max time that a cart is allowed to exists.
       * @return The value.
       */
     public java.lang.Integer getShoppingCartTtl() {
@@ -341,6 +362,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'shopping_cart_ttl' field.
+      * Max time that a cart is allowed to exists.
       * @param value The value of 'shopping_cart_ttl'.
       * @return This builder.
       */
@@ -353,6 +375,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'shopping_cart_ttl' field has been set.
+      * Max time that a cart is allowed to exists.
       * @return True if the 'shopping_cart_ttl' field has been set, false otherwise.
       */
     public boolean hasShoppingCartTtl() {
@@ -362,6 +385,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'shopping_cart_ttl' field.
+      * Max time that a cart is allowed to exists.
       * @return This builder.
       */
     public com.jundy.client.RuleSet.Builder clearShoppingCartTtl() {
@@ -371,6 +395,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'configurable_customer_info_obj_fields' field.
+      * What customer information fields are required for customer data to be considered 'compelte'
       * @return The value.
       */
     public java.lang.CharSequence getConfigurableCustomerInfoObjFields() {
@@ -379,6 +404,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'configurable_customer_info_obj_fields' field.
+      * What customer information fields are required for customer data to be considered 'compelte'
       * @param value The value of 'configurable_customer_info_obj_fields'.
       * @return This builder.
       */
@@ -391,6 +417,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'configurable_customer_info_obj_fields' field has been set.
+      * What customer information fields are required for customer data to be considered 'compelte'
       * @return True if the 'configurable_customer_info_obj_fields' field has been set, false otherwise.
       */
     public boolean hasConfigurableCustomerInfoObjFields() {
@@ -400,6 +427,7 @@ public class RuleSet extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'configurable_customer_info_obj_fields' field.
+      * What customer information fields are required for customer data to be considered 'compelte'
       * @return This builder.
       */
     public com.jundy.client.RuleSet.Builder clearConfigurableCustomerInfoObjFields() {

@@ -6,15 +6,17 @@
     {
       "name": "uuid",
       "type": "string",
-      "default": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+      "default": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+      "doc": "UUID for client that rules belong to"
     },
     {
       "name": "Channel",
       "type": {
         "type": "enum",
         "name": "Channel",
-        "symbols": [ "INTERNET", "IVR", "PBO", "PHONE" ],
-        "default": "INTERNET"
+        "symbols": [ "INTERNET", "IVR", "PHONE" ],
+        "default": "INTERNET",
+        "doc": "Category that the client is allows to transact on"
       }
     },
     {
@@ -23,13 +25,15 @@
         "type": "enum",
         "name": "Market",
         "symbols": [ "UNITEDSTATES", "AUSTRALIA", "CANADA", "GERMANY", "GREATBRITAIN", "IRELAND", "MEXICO", "NEWZEALAND", "NORTHIRELAND", "SPAIN" ],
-        "default": "UNITEDSTATES"
+        "default": "UNITEDSTATES",
+        "doc": "Market which client is allowed to operate in"
       }
     },
     {
       "name": "feature_set",
       "type": [ "null", "string" ],
-      "default": null
+      "default": null,
+      "doc": "The human readable client name/id"
     },
     {
       "name": "RuleSet",
@@ -40,22 +44,26 @@
           {
             "name": "enable_insurance",
             "type": "boolean",
-            "default": false
+            "default": false,
+            "doc": "Flag indicating if client is allowed to offer insurance"
           },
           {
             "name": "require_delivery_method_to_complete_order",
             "type": "boolean",
-            "default": false
+            "default": false,
+            "doc": "Flag indicating if client is required to provided a delivery method to complete an order"
           },
           {
             "name": "shopping_cart_ttl",
             "type": "int",
-            "default": 600
+            "default": 600,
+            "doc": "Max time that a cart is allowed to exists."
           },
           {
             "name": "configurable_customer_info_obj_fields",
             "type": ["null", "string"],
-            "default": null
+            "default": null,
+            "doc": "What customer information fields are required for customer data to be considered 'compelte'"
           }
         ]
       }
