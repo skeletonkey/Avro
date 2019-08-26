@@ -10,7 +10,6 @@ use Scalar::Util qw(
 );
 use Try::Tiny;
 
-use Avro::Schema;
 use Kafka qw(
     $DEFAULT_MAX_BYTES
     $DEFAULT_MAX_NUMBER_OF_OFFSETS
@@ -18,6 +17,12 @@ use Kafka qw(
 );
 use Kafka::Connection;
 use Kafka::Consumer;
+use Avro::BinaryDecoder;
+use Avro::Schema;
+use IO::String;
+
+use JSON::XS;
+use LWP::Simple;
 
 use Erik;
 
@@ -26,13 +31,18 @@ $ENV{PERL_KAFKA_DEBUG} = 1;
 # http://localhost:8081/schemas/ids/1
 
 my $topic_name = 'config_user_rules';
+my $subject = "$topic_name-value";
+
+my $default_schema_id = 121;
+my %offset_to_schema_id = (
+    0 => $default_schema_id,
+);
 
 my ( $connection, $consumer );
 try {
 
     #-- Connection
     $connection = Kafka::Connection->new(
-        # host => 'localhost'
         broker_list => [ 'localhost:9092' ],
         timeout     => 100,
     );
@@ -54,7 +64,9 @@ try {
         warn "Error: Offsets are not received\n";
     }
 
-    Erik::log("Max Bytes: $DEFAULT_MAX_BYTES");
+    my $writer_schema = Avro::Schema->parse(get_schema($default_schema_id));
+    Erik::dump(writer_schema => $writer_schema);
+
     while (1) {
         # Consuming messages
         my $messages = $consumer->fetch(
@@ -67,6 +79,8 @@ try {
         if ( $messages ) {
             foreach my $message ( @$messages ) {
                 if ( $message->valid ) {
+                    my $schema_id = get_schema_id($message->offset);
+                    my $reader_schema = Avro::Schema->parse(get_schema($schema_id));
                     say 'payload    : ', $message->payload;
                     say 'key        : ', $message->key;
                     say 'offset     : ', $message->offset;
@@ -90,15 +104,23 @@ try {
                     print $fh $payload;
                     close($fh);
 
-                    Erik::dump(payload => $payload);
-                    my @lines = `hexdump -c /tmp/avro_message`;
-                    Erik::dump(hexdump => \@lines);
-                    Erik::log("Finish Hex Dump");
-                    Erik::dump(Unpackage => [unpack("a4a*", $payload)]);
-                    my ($magic, $schema_id, $msg) = unpack("b2a8xa*", $payload);
-                    Erik::log("magic: $magic");
-                    Erik::log("schema_id: $schema_id");
-                    Erik::log("msg: $msg");
+                    Erik::dump(writer => $writer_schema);
+                    Erik::dump(reader => $reader_schema);
+                    my $dec = Avro::BinaryDecoder->decode(
+                        writer_schema => $writer_schema,
+                        reader_schema => $reader_schema,
+                        reader        => IO::String->new($message->payload),
+                    );
+                    Erik::log("dec: $dec");
+                    # Erik::dump(payload => $payload);
+                    # my @lines = `hexdump -c /tmp/avro_message`;
+                    # Erik::dump(hexdump => \@lines);
+                    # Erik::log("Finish Hex Dump");
+                    # Erik::dump(Unpackage => [unpack("a4a*", $payload)]);
+                    # my ($magic, $schema_id, $msg) = unpack("b2a8xa*", $payload);
+                    # Erik::log("magic: $magic");
+                    # Erik::log("schema_id: $schema_id");
+                    # Erik::log("msg: $msg");
                     # Erik::dump(message => $message, 3);
                 } else {
                     say 'error      : ', $message->error;
@@ -125,3 +147,28 @@ END {
     $connection->close;
     undef $connection;
 };
+
+sub get_schema_id {
+    my $offset = shift;
+    return $default_schema_id unless defined $offset;
+
+    my $schema_id;
+    foreach my $key (sort {$a <=> $b} keys %offset_to_schema_id) {
+        if ($key > $offset) {
+            last;
+        }
+        $schema_id = $offset_to_schema_id{$key}
+    }
+
+    return $schema_id;
+}
+
+sub get_schema {
+    my $schema_id = shift;
+
+    my $content = get("http://localhost:8081/schemas/ids/$schema_id");
+    my $json = decode_json($content);
+
+    Erik::log("schema: " . $json->{schema});
+    return $json->{schema};
+}
