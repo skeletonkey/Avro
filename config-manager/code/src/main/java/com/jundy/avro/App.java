@@ -10,11 +10,7 @@ import com.jundy.client.Channel;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -36,6 +32,11 @@ public class App
                 .setMarket(Market.UNITEDSTATES)
                 .setRuleSet(clientRuleSet)
                 .build();
+
+        Rules clientRulesManual = new Rules();
+        clientRulesManual.setChannel(Channel.INTERNET);
+        clientRulesManual.setUuid(UUID.randomUUID().toString());
+        clientRulesManual.setRuleSet(clientRuleSet);
 
         KafkaProducer producer = new KafkaProducer<>(props);
         ProducerRecord record = new ProducerRecord<>(topicName, messageName(clientRules), clientRules);
