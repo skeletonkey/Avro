@@ -22,6 +22,10 @@ public class App
         props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
         props.put("schema.registry.url", "http://localhost:8081");
 
+//Unlike constructors, builders will automatically set any default values specified in the schema
+//builders validate the data as it set, whereas objects constructed directly will not cause an error until the object is serialized
+//using constructors directly generally offers better performance, as builders create a copy of the datastructure before it is written
+// Source: http://avro.apache.org/docs/current/gettingstartedjava.html#Creating+Users
         RuleSet clientRuleSet = RuleSet.newBuilder()
                 .setConfigurableCustomerInfoObjFields("first_name,last_name")
                 .setEnableInsurance(true)
