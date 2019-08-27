@@ -2,12 +2,14 @@ package com.jundy.avro;
 
 import java.util.*;
 
+import org.apache.avro.specific.SpecificData;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import com.jundy.client.Rules;
+import com.jundy.client.RuleSet;
 import org.apache.kafka.common.TopicPartition;
 
 public class App
@@ -45,6 +47,12 @@ public class App
                     System.out.println("Offset: " + record.offset());
                     System.out.println(record.key());
                     System.out.println(record.value());
+
+                    Rules rules = (Rules) SpecificData.get().deepCopy(Rules.SCHEMA$, record.value());
+                    RuleSet ruleSet = rules.getRuleSet();
+                    if (ruleSet.getEnableInsurance()) {
+                        System.out.println(rules.getChannel() + " is allowed to sell insurance");
+                    }
                 }
             }
         }
