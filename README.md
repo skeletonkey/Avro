@@ -2,7 +2,7 @@
 This repository contains everything for the August 2019 Kafka Meetup talk titles:
 > Adding Avro to your Kafka streams to meet your messaging needs
 
-Slides to the presenetaiton are available at [Slide Share](https://www.slideshare.net/ErikTank/adding-avro-to-your-kafka-streams-to-meet-your-messaging-needs)
+Slides to the presentation are available at [Slide Share](https://www.slideshare.net/ErikTank/adding-avro-to-your-kafka-streams-to-meet-your-messaging-needs)
 
 ## Purpose
 This repo contains everything that is needed to play around with Avro.
