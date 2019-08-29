@@ -2,8 +2,14 @@
 
 
 ## Build & Develop
+### Build
 ```
 docker build --rm=false -t java_consumer .
+```
+
+### Develop
+This will start the container and drop you at a Bash prompt.
+```
 docker run -it --rm --name my_java_consumer --network host java_consumer /bin/bash
 ```
 

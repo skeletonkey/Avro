@@ -2,8 +2,14 @@
 
 
 ## Build & Develop
+### Build
 ```
-docker build --rm=false -t config_manager .
+docker build --rm=false -t config-manager .
+```
+
+### Develop
+This will start the container and drop you at a Bash prompt:
+```
 docker run -it --rm --name my_config-manager --network host config-manager /bin/bash
 ```
 
