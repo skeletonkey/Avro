@@ -16,7 +16,7 @@ docker run -it --rm --name my_java_consumer --network host java_consumer /bin/ba
 To get share pertinent files between host and container:
 
 ```
-docker run -it --rm --name my_java_consumer --netork host -v $(pwd)/code:/code java_consumer /bin/bash
+docker run -it --rm --name my_java_consumer --network host -v $(pwd)/code:/code java_consumer /bin/bash
 ```
 
 ## Consume from Kafka Topic

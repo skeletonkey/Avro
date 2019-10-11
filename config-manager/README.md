@@ -16,7 +16,7 @@ docker run -it --rm --name my_config-manager --network host config-manager /bin/
 To get share pertinent files between host and container:
 
 ```
-docker run -it --rm --name my_config-manager --netork host -v $(pwd)/code:/code config-manager /bin/bash
+docker run -it --rm --name my_config-manager --network host -v $(pwd)/code:/code config-manager /bin/bash
 ```
 
 ## Produce to Kafka
