@@ -49,6 +49,7 @@ public class App
                     System.out.println(record.value());
 
                     Rules rules = (Rules) SpecificData.get().deepCopy(Rules.SCHEMA$, record.value());
+                    System.out.println("rules parsed:\n" + rules);
                     RuleSet ruleSet = rules.getRuleSet();
                     if (ruleSet.getEnableInsurance()) {
                         System.out.println(rules.getChannel() + " is allowed to sell insurance");
