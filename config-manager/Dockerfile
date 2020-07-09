@@ -1,5 +1,5 @@
 FROM maven:3.6-jdk-8
-MAINTAINER Erik Tank <erik.tank@ticketmaster.com>
+LABEL MAINTAINER="Erik Tank <erik.tank@ticketmaster.com>"
 
 
 WORKDIR /code
